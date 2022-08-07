@@ -1,5 +1,9 @@
-python/chromedriver.exe
-python/model/*
+python/post-test/chromedriver.exe
+python/post-test/model/*
+python/pre-test/chromedriver.exe
+python/pre-test/model/*
 javascript/chromedriver.exe
-javascript/model/*
+javascript/data/*
+javascript/env/*
+javascript/node_modules
 CATATAN

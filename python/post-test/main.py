@@ -8,7 +8,7 @@ from selenium.webdriver.support.ui import Select
 
 import time, json
 
-pathJson = "model/jsonFileTest.json";
+pathJson = "model/jsonFileTest.json"
 # array sebagai penampung dari data json
 datasList = []
 
@@ -24,7 +24,7 @@ browser = webdriver.Chrome()
 def directWeb():
     try:
         browser.set_window_size(500, 1000)
-        browser.get('https://event.literasidigital.id/hadir/22220')
+        browser.get('https://event.literasidigital.id/hadir/22467')
         time.sleep(1)
 
 
@@ -37,8 +37,7 @@ def fillInput(data):
     try:
         i = 0
         for d in data:
-            if int(d['id']) % 10 == 0 :
-                browser.refresh()
+            
                 
             i += 1
             # Nama Lengkap
@@ -70,54 +69,59 @@ def fillInput(data):
 
             # Kota Asal
             browser.find_element(By.ID,'react-select-select-cities-input').send_keys(d['kotaAsal'], Keys.RETURN)
-
+           
             # Captcha
             browser.execute_script("arguments[0].scrollIntoView();", browser.find_element(By.ID,'react-select-select-cities-input'))
             captcha = input('Masukan validasi captcha (sample : 9*9): \n');
-            arr = list(captcha);
+            arr = list(captcha)
             if arr[1] == '+' :
-                result = int(arr[0]) + int(arr[2]);
+                result = int(arr[0]) + int(arr[2])
             else :
-                result = int(arr[0]) * int(arr[2]);
-            browser.find_element(By.ID, 'captcha').send_keys(result)
+                result = int(arr[0]) * int(arr[2])
+            
+            browser.find_element(By.ID,'captcha').send_keys(result)
+            # browser.find_element(By.ID, 'captcha').send_keys(result)
 
             # Select Radio Button
             q1 = browser.find_element(By.ID, "1070-"+d['qSatu'])
             browser.execute_script("arguments[0].scrollIntoView();", q1)
-            time.sleep(.3)
+            time.sleep(.5)
             q1.click()
 
             q2 = browser.find_element(By.ID, "1071-"+d['qDua'])
             browser.execute_script("arguments[0].scrollIntoView();", q2)
-            time.sleep(.3)
             q2.click()
 
             q3 = browser.find_element(By.ID, "1072-"+d['qTiga'])
             browser.execute_script("arguments[0].scrollIntoView();", q3)
-            time.sleep(.3)
             q3.click()
 
             q4 = browser.find_element(By.ID, "1073-"+d['qEmpat'])
             browser.execute_script("arguments[0].scrollIntoView();", q4)
-            time.sleep(.3)
+            time.sleep(.5)
             q4.click()
 
             q5 = browser.find_element(By.ID, "1076-"+d['qLima'])
             browser.execute_script("arguments[0].scrollIntoView();", q5)
-            time.sleep(.3)
             q5.click()
+
+            
 
             # submit
             footer = browser.find_element(By.CSS_SELECTOR, '#__next > div > div.footer.mt-3')
             browser.execute_script("arguments[0].scrollIntoView();", footer)
             time.sleep(1)
-            browser.find_element(By.XPATH, '//button[@type="submit"][@class="btn btn-primary"]').click()
+            browser.find_element(By.XPATH, '//*[@id="__next"]/div/div[3]/div/div[2]/form/div[14]/button').click()
             print('Data dengan "id": "'+ d['id'] +'" atas nama '+d['namaLengkap']+' berhasil ✔️')
             time.sleep(2)    
 
             # kembali ke page sebelumnya
             browser.execute_script("window.history.go(-1)")
-            time.sleep(2)    
+            time.sleep(2)
+
+            #refresh apabila id kelipatan 0
+            if int(d['id']) % 10 == 0 :
+                browser.refresh()    
 
         print('Total Data : '+ str(i) +' Selesai Post Test')  
 

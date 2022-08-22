@@ -16,6 +16,6 @@ data = {
 
     ],
     'selectorByCSS' : '#meeting_register_container > div:nth-child(7) > a',
-    'jsonPath' : r'model/csvFileTest.csv',
-    'csvPath' : r'model/jsonFileTest.json'
+    'csvPath' : r'model/csvFileTest.csv',
+    'jsonPath' : r'model/jsonFileTest.json'
 }

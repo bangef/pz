@@ -1,6 +1,6 @@
 python/post-test/chromedriver.exe
 python/post-test/model/*
-python/post-test/module/env.py
+python/post-test/env.py
 python/pre-test/chromedriver.exe
 python/pre-test/model/*
 javascript/chromedriver.exe

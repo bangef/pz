@@ -1,4 +1,4 @@
-from module.env import data
+from env import data
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import Select

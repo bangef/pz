@@ -1,5 +1,5 @@
 from json import loads
-from module.env import data
+from env import data
 
 def openFileJson():
     # array sebagai penampung dari data json

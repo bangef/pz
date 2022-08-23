@@ -22,7 +22,7 @@ browser = webdriver.Chrome()
 def directWeb():
     try:
         browser.set_window_size(500, 1000)
-        browser.get('https://event.literasidigital.id/daftar/22744')
+        browser.get('https://event.literasidigital.id/daftar/22997')
         time.sleep(1)
 
 
@@ -92,12 +92,8 @@ def fillInput(data):
             time.sleep(2)  
 
             # kembali ke page sebelumnya
-            browser.execute_script("window.history.go(-1)")
+            browser.get('https://event.literasidigital.id/daftar/22997')
             time.sleep(2)
-
-            #refresh apabila id kelipatan 0
-            if int(d['id']) % 10 == 0 :
-                browser.refresh()    
 
         print('Total Data : '+ str(i) +' Selesai Post Test')  
 

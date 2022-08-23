@@ -1,5 +1,6 @@
 from module.program import program
 from module.convert import convert
+from module.openFileJson import openFileJson
 
 def main():
     condition = True
@@ -12,7 +13,10 @@ def main():
             except Exception as err:
                 print(err)
         elif question == 2 :
-            program()
+            try: 
+                program(openFileJson())
+            except Exception as err:
+                print(err)
         else :
             condition = False
             print('Pilihan anda salah! Keluar Program')
